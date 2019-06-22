@@ -1,6 +1,7 @@
-FROM python:3.6-slim-stretch AS base
+FROM python:3.6-slim-stretch
 
 RUN apt-get update -y && apt install -y wget libopencv-dev python-opencv
+RUN apt install -y openssh-server rsync tmux
 
 RUN wget https://dl.google.com/coral/edgetpu_api/edgetpu_api_latest.tar.gz \
     -O edgetpu_api.tar.gz --trust-server-names && \
@@ -10,9 +11,6 @@ RUN wget https://dl.google.com/coral/edgetpu_api/edgetpu_api_latest.tar.gz \
     echo y | bash ./install.sh
 
 RUN pip install opencv-python pillow 
-
-
-FROM base
-
-RUN apt install -y openssh-server rsync tmux
 CMD ["/bin/bash", "-c" , "mkdir -p /var/run/sshd && /usr/sbin/sshd -D"]
+
+
