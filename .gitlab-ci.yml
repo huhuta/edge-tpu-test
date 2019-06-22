@@ -1,0 +1,13 @@
+stages:
+  - build
+
+build:
+  tags: 
+    - k8s-office
+  stage: build
+  # only:
+  #   - develop
+  image: huhuta/alpine-kubectl-evnsubst:v1
+  script: 
+    - envsubst < k8s/build.yaml
+    - envsubst < k8s/build.yaml | kubectl apply -f-
