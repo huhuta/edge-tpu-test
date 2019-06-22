@@ -29,4 +29,3 @@ spec:
     env:
     - name: DOCKER_CONFIG
       value: /builder/home/.docker
-
