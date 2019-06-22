@@ -9,23 +9,13 @@ spec:
     git:
       url: $CI_PROJECT_URL
       revision: $CI_COMMIT_REF_NAME
-  # steps:
-  # - name: build-and-push
-  #   image: gcr.io/kaniko-project/executor
-  #   args:
-  #   - --dockerfile=/workspace/Dockerfile.test
-  #   - --destination=dudaji/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
-  #   - --destination=dudaji/$CI_PROJECT_NAME:latest
-  #   # - --cache=true
-  #   env:
-  #   - name: DOCKER_CONFIG
-  #     value: /builder/home/.docker
   steps:
   - name: build-and-push
     image: gcr.io/kaniko-project/executor
     args:
-    - --dockerfile=/workspace/Dockerfile
-    - --destination=$CI_REGISTRY_IMAGE:service
+    - --dockerfile=/workspace/Dockerfile.test
+    - --destination=dudaji/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
+    - --destination=dudaji/$CI_PROJECT_NAME:latest
     env:
     - name: DOCKER_CONFIG
       value: /builder/home/.docker
