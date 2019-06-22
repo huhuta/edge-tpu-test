@@ -13,10 +13,10 @@ spec:
   - name: build-and-push
     image: gcr.io/kaniko-project/executor
     args:
-    - --dockerfile=/workspace/Dockerfile
+    - --dockerfile=/workspace/Dockerfile.test
     - --destination=dudaji/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
     - --destination=dudaji/$CI_PROJECT_NAME:latest
-    - --cache=true
+    # - --cache=true
     env:
     - name: DOCKER_CONFIG
       value: /builder/home/.docker
