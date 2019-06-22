@@ -16,6 +16,7 @@ spec:
     - --dockerfile=/workspace/Dockerfile.test
     - --destination=dudaji/$CI_PROJECT_NAME:$CI_COMMIT_SHORT_SHA
     - --destination=dudaji/$CI_PROJECT_NAME:latest
+    - --cache=true
     env:
     - name: DOCKER_CONFIG
       value: /builder/home/.docker
