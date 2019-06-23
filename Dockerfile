@@ -1,6 +1,6 @@
-FROM debian:buster-slim
+FROM debian:stretch-slim
 
-RUN apt update -y && apt install -y wget libopencv-dev python-opencv
+RUN apt update -y && apt install -y wget 
 
 RUN wget https://dl.google.com/coral/edgetpu_api/edgetpu_api_latest.tar.gz \
     -O edgetpu_api.tar.gz --trust-server-names && \
