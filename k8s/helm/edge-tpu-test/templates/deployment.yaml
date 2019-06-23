@@ -26,6 +26,8 @@ spec:
           path: {{ .Values.volume.src }}
           # type: DirectoryOrCreate
       {{- end }}}}
+      nodeSelector:
+        edge-tpu: "true"
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

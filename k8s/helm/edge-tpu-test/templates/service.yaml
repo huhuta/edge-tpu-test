@@ -14,6 +14,8 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+    - port: 22
+      name: ssh
   selector:
     app.kubernetes.io/name: {{ include "edge-tpu-test.name" . }}
     app.kubernetes.io/instance: {{ .Release.Name }}

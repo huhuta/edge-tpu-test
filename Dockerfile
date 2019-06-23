@@ -10,7 +10,6 @@ RUN wget https://dl.google.com/coral/edgetpu_api/edgetpu_api_latest.tar.gz \
     sed "s/sudo//g" install.sh > install_tmp.sh && \
     echo y | bash install_tmp.sh
 
-
 RUN mkdir -p /Downloads && \
     cd /Downloads && \
     wget https://dl.google.com/coral/canned_models/all_models.tar.gz && \
