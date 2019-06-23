@@ -18,10 +18,6 @@ RUN mkdir -p /Downloads && \
 
 RUN pip3 install opencv-python pillow 
 
-RUN apt install -y openssh-server rsync tmux && \
-    echo 'root:tlzmflt' | chpasswd && \
-    sed -i 's/PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-
-CMD ["/bin/bash", "-c" , "mkdir -p /var/run/sshd && /usr/sbin/sshd -D"]
+CMD ["python3", "app.py"]
 
 
