@@ -124,6 +124,5 @@ dmypy.json
 .pyre/
 
 # tmp
-*.py
 fswatch.sh
 rsync.sh
