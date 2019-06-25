@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 
-RUN apt update -y && apt install -y wget 
+RUN apt update -y && apt install -y wget libopencv-dev python-opencv
 
 RUN wget https://dl.google.com/coral/edgetpu_api/edgetpu_api_latest.tar.gz \
     -O edgetpu_api.tar.gz --trust-server-names && \
@@ -16,7 +16,10 @@ RUN mkdir -p /Downloads && \
     tar xzf all_models.tar.gz && \
     rm all_models.tar.gz
 
-RUN pip3 install opencv-python pillow 
+RUN pip3 install opencv-python pillow flask requests
+
+WORKDIR /root
+COPY ./ ./
 
 CMD ["python3", "app.py"]
 

@@ -4,6 +4,7 @@ metadata:
   name: $CI_PROJECT_NAME-$CI_COMMIT_SHORT_SHA
   namespace: build
 spec:
+  timeout: 20m
   serviceAccountName: knative-build-bot
   source:
     git:

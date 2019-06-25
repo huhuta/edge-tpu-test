@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: dudaji/edge-tpu-test
-  tag: latest
+  tag: test
   pullPolicy: Always
 
 nameOverride: ""
@@ -28,6 +28,8 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+env: {}
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious

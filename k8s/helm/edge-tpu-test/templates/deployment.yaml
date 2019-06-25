@@ -19,28 +19,29 @@ spec:
         app.kubernetes.io/name: {{ include "edge-tpu-test.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
-      {{- if .Values.volume.src }}
+      {{- if .Values.debug }}
       volumes:
-      - name: src
+      - name: tmp
         hostPath:
-          path: {{ .Values.volume.src }}
-          # type: DirectoryOrCreate
-      {{- end }}}}
-      nodeSelector:
-        edge-tpu: "true"
+          path: /tmp
+      {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           securityContext:
             privileged: true
+          {{- if .Values.debug }}
           volumeMounts:
-          - mountPath: /root
-            name: src
+          - mountPath: /tmp
+            name: tmp
+          {{- end }}
           ports:
             - name: http
               containerPort: 80
               protocol: TCP
+          env:
+{{ toYaml .Values.env | indent 12 }}
           # livenessProbe:
           #   httpGet:
           #     path: /

@@ -1,4 +1,15 @@
-test: true
+debug: true
+
 service:
   type: LoadBalancer
   port: 80
+
+env:
+- name: VIDEO_SOURCE
+  valueFrom:
+    secretKeyRef:
+      name: camera-urls
+      key: picam1
+
+nodeSelector:
+  kubernetes.io/hostname: dudaji-cloud2
